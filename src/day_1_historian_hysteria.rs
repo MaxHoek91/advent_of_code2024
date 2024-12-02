@@ -1,7 +1,7 @@
 use std::collections::HashMap;
+use std::fmt::Debug;
 use std::fs;
 use std::str::FromStr;
-use std::fmt::Debug;
 
 use anyhow::Result as Result;
 
