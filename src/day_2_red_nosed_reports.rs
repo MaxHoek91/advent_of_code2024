@@ -2,7 +2,7 @@ use std::fs;
 
 use anyhow::Result as Result;
 
-pub fn solve_day_2(file: &str) -> Result<(u32, u32)> {
+pub fn solve_day_two(file: &str) -> Result<(u32, u32)> {
     let data = fs::read_to_string(file)?;
 
     let mut safe_rows_part_one: u32 = 0;
