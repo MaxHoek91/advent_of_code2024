@@ -4,7 +4,7 @@ use std::fs;
 use anyhow::Result as Result;
 
 type LetterMap = HashMap<(i32, i32), u8>;
-type StartCoordsOne = Vec<((i32, i32), u8, (i32, i32))>;
+type StartCoordsOne = Vec<((i32, i32), (i32, i32))>;
 type StartCoordsTwo = Vec<(i32, i32)>;
 
 const DIRECTIONS: [(i32, i32); 8] = [
@@ -50,7 +50,7 @@ fn prepare_map(data: &[u8]) -> (LetterMap, StartCoordsOne, StartCoordsTwo) {
                 DIRECTIONS  // For each direction we can search add a start coordinate.
                     .iter()
                     .for_each(
-                        | dir | start_coords_one.push(((row, col), char, *dir))
+                        | dir | start_coords_one.push(((row, col), *dir))
                     );
 
                 letter_map.insert((row, col), char);
@@ -73,37 +73,22 @@ fn prepare_map(data: &[u8]) -> (LetterMap, StartCoordsOne, StartCoordsTwo) {
 
 /// Do a search through the coordinates to see if X->M, M->A, and A->S
 fn search_xmas(map: &LetterMap, starts: StartCoordsOne) -> u32 {
-    let mut queue = starts;
     let mut xmas_count: u32 = 0;
-
-    while let Some((coord, char, direction)) = queue.pop() {
-
-        match char {
-            b'X' => {
-                let new_coords = (coord.0 + direction.0, coord.1 + direction.1);
-                if let Some(&new_char) = map.get(&new_coords) {
-                    if new_char == b'M' {
-                        queue.push((new_coords, new_char, direction));
-                    }
-                }
-            },
-            b'M' => {
-                let new_coords = (coord.0 + direction.0, coord.1 + direction.1);
-                if let Some(&new_char) = map.get(&new_coords) {
-                    if new_char == b'A' {
-                        queue.push((new_coords, new_char, direction));
-                    }
-                }
-            },
-            b'A' => {
-                let new_coords = (coord.0 + direction.0, coord.1 + direction.1);
-                if let Some(&new_char) = map.get(&new_coords) {
-                    if new_char == b'S' {
-                        xmas_count += 1;
-                    }
-                }
-            },
-            _ => continue
+    
+    for ((x, y), (dx, dy)) in starts.iter() {
+        let m = map.get(&(x + dx, y + dy));
+        if m != Some(&b'M') {
+            continue
+        }
+        
+        let a = map.get(&(x + (dx * 2), y + (dy * 2)));
+        if a != Some(&b'A') {
+            continue
+        }
+        
+        let s = map.get(&(x + (dx * 3), y + (dy * 3)));
+        if s == Some(&b'S') {
+            xmas_count += 1;
         }
     }
 
@@ -124,8 +109,8 @@ fn search_x_mas(map: &LetterMap, starts: StartCoordsTwo) -> u32 {
             continue
         }
 
-        if (diag_chars[0..2] == [&b'M', &b'S'] || diag_chars[0..2] == [&b'S', &b'M'])
-            && (diag_chars[2..] == [&b'M', &b'S'] || diag_chars[2..] == [&b'S', &b'M']) {
+        if (diag_chars[0..2].contains(&&b'M') && diag_chars[0..2].contains(&&b'S'))
+            && (diag_chars[2..].contains(&&b'M') && diag_chars[2..].contains(&&b'S')) {
             x_mas_count += 1;
         }
     }
