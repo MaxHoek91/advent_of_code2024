@@ -28,3 +28,12 @@ fn test_day_3() {
     assert_eq!(value.0, 183788984);
     assert_eq!(value.1, 62098619);
 }
+
+#[test]
+fn test_day_4() {
+    let file = Path::new("./data/day_4_ceres_search.txt").to_str().unwrap();
+    let value = day_4_ceres_search::solve_day_four(file).unwrap();
+
+    assert_eq!(value.0, 2378);
+    assert_eq!(value.1, 1796);
+}
