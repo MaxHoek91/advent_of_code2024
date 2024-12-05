@@ -5,6 +5,7 @@ pub mod day_1_historian_hysteria;
 pub mod day_2_red_nosed_reports;
 pub mod day_3_mull_it_over;
 pub mod day_4_ceres_search;
+pub mod day_5_print_queue;
 
 pub fn solve_all() {
     println!("Advent of Code 2024\n");
@@ -13,6 +14,7 @@ pub fn solve_all() {
     day_2();
     day_3();
     day_4();
+    day_5();
 }
 
 fn day_1() {
@@ -67,6 +69,20 @@ fn day_4() {
         Run Time: {:?}\n\
         XMAS Count 1: {}\n\
         X-MAS Count 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_5() {
+    let file = Path::new("./data/day_5_print_queue.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_5_print_queue::solve_day_5(file).unwrap();
+
+    println!(
+        "Day 5: Print Queue\n\
+        Run Time: {:?}\n\
+        Ordered Pages Sum 1: {}\n\
+        Unordered Pages Sum 2: {}\n",
         timer.elapsed(), value.0, value.1
     );
 }

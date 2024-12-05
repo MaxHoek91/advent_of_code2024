@@ -37,3 +37,12 @@ fn test_day_4() {
     assert_eq!(value.0, 2378);
     assert_eq!(value.1, 1796);
 }
+
+#[test]
+fn test_day_5() {
+    let file = Path::new("./data/day_5_print_queue.txt").to_str().unwrap();
+    let value = day_5_print_queue::solve_day_5(file).unwrap();
+
+    assert_eq!(value.0, 4924);
+    assert_eq!(value.1, 6085);
+}
