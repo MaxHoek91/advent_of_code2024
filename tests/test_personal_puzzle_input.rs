@@ -46,3 +46,12 @@ fn test_day_5() {
     assert_eq!(value.0, 4924);
     assert_eq!(value.1, 6085);
 }
+
+#[test]
+fn test_day_6() {
+    let file = Path::new("./data/day_6_guard_gallivant.txt").to_str().unwrap();
+    let value = day_6_guard_gallivant::solve_day_6(file).unwrap();
+
+    assert_eq!(value.0, 4967);
+    assert_eq!(value.1, 1789);
+}

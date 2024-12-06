@@ -8,7 +8,7 @@ type OrderingMap = HashMap<u8, Vec<u8>>;
 
 pub fn solve_day_5(file: &str) -> Result<(u32, u32)> {
     let data = fs::read_to_string(file)?;
-    
+
     // Split the data into the part with ordering_rules and pages.
     let (ordering_rules, pages) = data.split_once("\n\n").unwrap();
 
@@ -16,7 +16,7 @@ pub fn solve_day_5(file: &str) -> Result<(u32, u32)> {
 
     let mut ordered_page_sum: u32 = 0;
     let mut unordered_page_sum: u32 = 0;
-    
+
     for line in pages.lines() {
         let mut page_set: Vec<u8> = line
             .split(',')
@@ -57,13 +57,13 @@ fn create_ordering_map(lines: &str) -> OrderingMap {
 }
 
 /// Check if the pages are ordered according to the OrderingMap.
-/// 
+///
 /// Iterate over the pages, and get the corresponding value from the OrderingMap.
 /// Missing values can be ignored.
-/// 
+///
 /// For each page check if any of the previous pages occur in the OrderingMap values.
 /// If this is the case we have an invalid sorting.
-/// 
+///
 /// Otherwise, return the middle page.
 fn check_order(pages: &[u8], ordering_map: &OrderingMap) -> Option<u8> {
     for (i, page) in pages.iter().skip(1).enumerate() {
@@ -81,13 +81,13 @@ fn check_order(pages: &[u8], ordering_map: &OrderingMap) -> Option<u8> {
 }
 
 /// Sort the pages according to the OrderingMap using a custom sorter.
-/// 
-/// When we encounter a | b then a must come before b therefore return Ordering::Less
-/// 
-/// In all other cases we don't care thus Ordering::Equal
-/// 
-/// Because of how the ordering map was constructed we cannot easily check for b | a
-/// so we do not use Ordering::Greater
+///
+/// When we encounter "a | b" then a must come before b therefore return Ordering::Less
+///
+/// In all other cases we don't care, so we can return Ordering::Equal
+///
+/// Because of how the ordering map was constructed we cannot easily check for "b | a",
+/// as a result we do not use Ordering::Greater
 fn sort_pages(pages: &mut [u8], ordering_map: &OrderingMap) -> u8 {
     pages.sort_unstable_by(
         | a, b | {
@@ -139,7 +139,7 @@ mod tests {
     #[test]
     fn test_page_ordering() {
         let ordering_map = create_ordering_map(MAP);
-        
+
         assert_eq!(check_order(&EXAMPLE1, &ordering_map), Some(61));
         assert_eq!(check_order(&EXAMPLE2, &ordering_map), Some(53));
         assert_eq!(check_order(&EXAMPLE3, &ordering_map), Some(29));
@@ -147,11 +147,11 @@ mod tests {
         assert_eq!(check_order(&EXAMPLE5, &ordering_map), None);
         assert_eq!(check_order(&EXAMPLE6, &ordering_map), None);
     }
-    
+
     #[test]
     fn test_page_sorting() {
         let ordering_map = create_ordering_map(MAP);
-        
+
         let mut ex = EXAMPLE4;
         assert_eq!(sort_pages(&mut ex, &ordering_map), 47);
 

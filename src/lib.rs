@@ -6,6 +6,7 @@ pub mod day_2_red_nosed_reports;
 pub mod day_3_mull_it_over;
 pub mod day_4_ceres_search;
 pub mod day_5_print_queue;
+pub mod day_6_guard_gallivant;
 
 pub fn solve_all() {
     println!("Advent of Code 2024\n");
@@ -15,6 +16,7 @@ pub fn solve_all() {
     day_3();
     day_4();
     day_5();
+    day_6();
 }
 
 fn day_1() {
@@ -83,6 +85,20 @@ fn day_5() {
         Run Time: {:?}\n\
         Ordered Pages Sum 1: {}\n\
         Unordered Pages Sum 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_6() {
+    let file = Path::new("./data/day_6_guard_gallivant.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_6_guard_gallivant::solve_day_6(file).unwrap();
+
+    println!(
+        "Day 6: Guard Gallivant\n\
+        Run Time: {:?}\n\
+        Tiles Covered 1: {}\n\
+        Objects To Cause Loops 2: {}\n",
         timer.elapsed(), value.0, value.1
     );
 }
