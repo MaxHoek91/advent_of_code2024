@@ -55,3 +55,12 @@ fn test_day_6() {
     assert_eq!(value.0, 4967);
     assert_eq!(value.1, 1789);
 }
+
+#[test]
+fn test_day_7() {
+    let file = Path::new("./data/day_7_bridge_repair.txt").to_str().unwrap();
+    let value = day_7_bridge_repair::solve_day_7(file).unwrap();
+
+    assert_eq!(value.0, 932137732557);
+    assert_eq!(value.1, 661823605105500);
+}

@@ -7,6 +7,7 @@ pub mod day_3_mull_it_over;
 pub mod day_4_ceres_search;
 pub mod day_5_print_queue;
 pub mod day_6_guard_gallivant;
+pub mod day_7_bridge_repair;
 
 pub fn solve_all() {
     println!("Advent of Code 2024\n");
@@ -17,6 +18,7 @@ pub fn solve_all() {
     day_4();
     day_5();
     day_6();
+    day_7();
 }
 
 fn day_1() {
@@ -99,6 +101,20 @@ fn day_6() {
         Run Time: {:?}\n\
         Tiles Covered 1: {}\n\
         Objects To Cause Loops 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_7() {
+    let file = Path::new("./data/day_7_bridge_repair.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_7_bridge_repair::solve_day_7(file).unwrap();
+
+    println!(
+        "Day 7: Bridge Repair\n\
+        Run Time: {:?}\n\
+        Total Calibration Result 1: {}\n\
+        Total Calibration Result 2: {}\n",
         timer.elapsed(), value.0, value.1
     );
 }
