@@ -19,7 +19,7 @@ enum Route {
     Finite
 }
 
-pub fn solve_day_6(file: &str) -> Result<(usize, u32)> {
+pub fn solve_day_06(file: &str) -> Result<(usize, u32)> {
     let data = fs::read(file)?;
     let (mut lab_map, start) = create_lab_map(&data);
     let (tiles_covered, visited_tiles) = traverse_lab_part_one(&lab_map, &start);

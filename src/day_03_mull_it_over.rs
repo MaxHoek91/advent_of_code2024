@@ -2,7 +2,7 @@ use std::fs;
 use regex::{Captures, Regex};
 use anyhow::Result as Result;
 
-pub fn solve_day_three(file: &str) -> Result<(u32, u32)> {
+pub fn solve_day_03(file: &str) -> Result<(u32, u32)> {
     let data = fs::read_to_string(file)?;
     Ok(parse_mul_with_do(&data))
 }

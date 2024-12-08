@@ -3,7 +3,7 @@ use std::ops::{Add, Mul};
 
 use anyhow::Result as Result;
 
-pub fn solve_day_7(file: &str) -> Result<(u64, u64)> {
+pub fn solve_day_07(file: &str) -> Result<(u64, u64)> {
     let data = fs::read_to_string(file)?;
 
     let mut total_of_valid_equations = 0;

@@ -6,7 +6,7 @@ use anyhow::Result as Result;
 
 type OrderingMap = HashMap<u8, Vec<u8>>;
 
-pub fn solve_day_5(file: &str) -> Result<(u32, u32)> {
+pub fn solve_day_05(file: &str) -> Result<(u32, u32)> {
     let data = fs::read_to_string(file)?;
 
     // Split the data into the part with ordering_rules and pages.
