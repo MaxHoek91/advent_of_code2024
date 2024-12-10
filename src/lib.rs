@@ -9,6 +9,8 @@ pub mod day_05_print_queue;
 pub mod day_06_guard_gallivant;
 pub mod day_07_bridge_repair;
 pub mod day_08_resonant_collinearity;
+pub mod day_09_disk_fragmenter;
+pub mod day_10_hoof_it;
 
 pub fn solve_all() {
     println!("Advent of Code 2024\n");
@@ -21,6 +23,8 @@ pub fn solve_all() {
     day_06();
     day_07();
     day_08();
+    day_09();
+    day_10();
 }
 
 fn day_01() {
@@ -131,6 +135,34 @@ fn day_08() {
         Run Time: {:?}\n\
         # Antinodes 1: {}\n\
         # Antinodes 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_09() {
+    let file = Path::new("./data/day_09_disk_fragmenter.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_09_disk_fragmenter::solve_day_09(file).unwrap();
+
+    println!(
+        "Day 9: Disk Fragmenter\n\
+        Run Time: {:?}\n\
+        Checksum 1: {}\n\
+        ... 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_10() {
+    let file = Path::new("./data/day_10_hoof_it.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_10_hoof_it::solve_day_10(file).unwrap();
+
+    println!(
+        "Day 10: Hoof It\n\
+        Run Time: {:?}\n\
+        Hiking Trails Score 1: {}\n\
+        Hiking Trails Rating 2: {}\n",
         timer.elapsed(), value.0, value.1
     );
 }

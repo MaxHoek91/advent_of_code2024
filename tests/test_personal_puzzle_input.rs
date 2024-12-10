@@ -73,3 +73,21 @@ fn test_day_08() {
     assert_eq!(value.0, 289);
     assert_eq!(value.1, 1030);
 }
+
+#[test]
+fn test_day_09() {
+    let file = Path::new("./data/day_09_disk_fragmenter.txt").to_str().unwrap();
+    let value = day_09_disk_fragmenter::solve_day_09(file).unwrap();
+
+    assert_eq!(value.0, 6471961544878);
+    assert_eq!(value.1, 0);
+}
+
+#[test]
+fn test_day_10() {
+    let file = Path::new("./data/day_10_hoof_it.txt").to_str().unwrap();
+    let value = day_10_hoof_it::solve_day_10(file).unwrap();
+
+    assert_eq!(value.0, 607);
+    assert_eq!(value.1, 1384);
+}
