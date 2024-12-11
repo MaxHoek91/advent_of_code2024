@@ -11,6 +11,7 @@ pub mod day_07_bridge_repair;
 pub mod day_08_resonant_collinearity;
 pub mod day_09_disk_fragmenter;
 pub mod day_10_hoof_it;
+pub mod day_11_plutonian_pebbles;
 
 pub fn solve_all() {
     println!("Advent of Code 2024\n");
@@ -25,6 +26,7 @@ pub fn solve_all() {
     day_08();
     day_09();
     day_10();
+    day_11();
 }
 
 fn day_01() {
@@ -163,6 +165,20 @@ fn day_10() {
         Run Time: {:?}\n\
         Hiking Trails Score 1: {}\n\
         Hiking Trails Rating 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_11() {
+    let file = Path::new("./data/day_11_plutonian_pebbles.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_11_plutonian_pebbles::solve_day_10(file).unwrap();
+
+    println!(
+        "Day 11: Plutonian Pebbles\n\
+        Run Time: {:?}\n\
+        Total Pebbles 1: {}\n\
+        Total Pebbles 2: {}\n",
         timer.elapsed(), value.0, value.1
     );
 }

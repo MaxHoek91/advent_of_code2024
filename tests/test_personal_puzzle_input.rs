@@ -91,3 +91,12 @@ fn test_day_10() {
     assert_eq!(value.0, 607);
     assert_eq!(value.1, 1384);
 }
+
+#[test]
+fn test_day_11() {
+    let file = Path::new("./data/day_11_plutonian_pebbles.txt").to_str().unwrap();
+    let value = day_11_plutonian_pebbles::solve_day_10(file).unwrap();
+
+    assert_eq!(value.0, 186424);
+    assert_eq!(value.1, 219838428124832);
+}
