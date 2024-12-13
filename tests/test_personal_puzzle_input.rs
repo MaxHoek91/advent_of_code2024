@@ -95,8 +95,26 @@ fn test_day_10() {
 #[test]
 fn test_day_11() {
     let file = Path::new("./data/day_11_plutonian_pebbles.txt").to_str().unwrap();
-    let value = day_11_plutonian_pebbles::solve_day_10(file).unwrap();
+    let value = day_11_plutonian_pebbles::solve_day_11(file).unwrap();
 
     assert_eq!(value.0, 186424);
     assert_eq!(value.1, 219838428124832);
+}
+
+#[test]
+fn test_day_12() {
+    let file = Path::new("./data/day_12_garden_groups.txt").to_str().unwrap();
+    let value = day_12_garden_groups::solve_day_12(file).unwrap();
+
+    assert_eq!(value.0, 0);
+    assert_eq!(value.1, 0);
+}
+
+#[test]
+fn test_day_13() {
+    let file = Path::new("./data/day_13_claw_contraption.txt").to_str().unwrap();
+    let value = day_13_claw_contraption::solve_day_13(file).unwrap();
+
+    assert_eq!(value.0, 27157);
+    assert_eq!(value.1, 104015411578548);
 }

@@ -12,6 +12,8 @@ pub mod day_08_resonant_collinearity;
 pub mod day_09_disk_fragmenter;
 pub mod day_10_hoof_it;
 pub mod day_11_plutonian_pebbles;
+pub mod day_12_garden_groups;
+pub mod day_13_claw_contraption;
 
 pub fn solve_all() {
     println!("Advent of Code 2024\n");
@@ -27,6 +29,8 @@ pub fn solve_all() {
     day_09();
     day_10();
     day_11();
+    day_12();
+    day_13();
 }
 
 fn day_01() {
@@ -172,13 +176,41 @@ fn day_10() {
 fn day_11() {
     let file = Path::new("./data/day_11_plutonian_pebbles.txt").to_str().unwrap();
     let timer = Instant::now();
-    let value = day_11_plutonian_pebbles::solve_day_10(file).unwrap();
+    let value = day_11_plutonian_pebbles::solve_day_11(file).unwrap();
 
     println!(
         "Day 11: Plutonian Pebbles\n\
         Run Time: {:?}\n\
         Total Pebbles 1: {}\n\
         Total Pebbles 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_12() {
+    let file = Path::new("./data/day_12_garden_groups.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_12_garden_groups::solve_day_12(file).unwrap();
+    
+    println!(
+        "Day 12: Garden Groups\n\
+        Run Time: {:?}\n\
+        ... 1: {}\n\
+        ... 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_13() {
+    let file = Path::new("./data/day_13_claw_contraption.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_13_claw_contraption::solve_day_13(file).unwrap();
+
+    println!(
+        "Day 13: Claw Contraption\n\
+        Run Time: {:?}\n\
+        Total Presses 1: {}\n\
+        Total Presses 2: {}\n",
         timer.elapsed(), value.0, value.1
     );
 }

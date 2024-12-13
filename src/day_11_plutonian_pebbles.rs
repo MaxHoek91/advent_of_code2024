@@ -4,7 +4,7 @@ use anyhow::Result as Result;
 
 type Memory = HashMap<(u64, u8), u64>;
 
-pub fn solve_day_10(file: &str) -> Result<(u64, u64)> {
+pub fn solve_day_11(file: &str) -> Result<(u64, u64)> {
     let data: Vec<u64> = fs::read_to_string(file)?
         .split_ascii_whitespace()
         .map(| val | val.parse().unwrap())
