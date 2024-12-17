@@ -118,3 +118,12 @@ fn test_day_13() {
     assert_eq!(value.0, 27157);
     assert_eq!(value.1, 104015411578548);
 }
+
+#[test]
+fn test_day_16() {
+    let file = Path::new("./data/day_16_reindeer_maze.txt").to_str().unwrap();
+    let value = day_16_reindeer_maze::solve_day_16(file).unwrap();
+
+    assert_eq!(value.0, 103512);
+    assert_eq!(value.1, 554);
+}

@@ -14,6 +14,7 @@ pub mod day_10_hoof_it;
 pub mod day_11_plutonian_pebbles;
 pub mod day_12_garden_groups;
 pub mod day_13_claw_contraption;
+pub mod day_16_reindeer_maze;
 
 pub fn solve_all() {
     println!("Advent of Code 2024\n");
@@ -31,6 +32,9 @@ pub fn solve_all() {
     day_11();
     day_12();
     day_13();
+    
+    
+    day_16();
 }
 
 fn day_01() {
@@ -211,6 +215,20 @@ fn day_13() {
         Run Time: {:?}\n\
         Total Presses 1: {}\n\
         Total Presses 2: {}\n",
+        timer.elapsed(), value.0, value.1
+    );
+}
+
+fn day_16() {
+    let file = Path::new("./data/day_16_reindeer_maze.txt").to_str().unwrap();
+    let timer = Instant::now();
+    let value = day_16_reindeer_maze::solve_day_16(file).unwrap();
+
+    println!(
+        "Day 16: Reindeer Maze\n\
+        Run Time: {:?}\n\
+        Lowest Score 1: {}\n\
+        Tiles Visisted 2: {}\n",
         timer.elapsed(), value.0, value.1
     );
 }
